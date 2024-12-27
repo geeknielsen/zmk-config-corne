@@ -13,7 +13,7 @@
         hold_behavior: hold_behavior {
             compatible = "zmk,behavior-hold-tap";
             label = "HOLD_BEHAVIOR";
-            bindings = <&to>, <&kp>;
+            bindings = <&mo>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
