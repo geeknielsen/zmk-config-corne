@@ -40,10 +40,10 @@
 
         layer_1 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans          &kp UP_ARROW    &trans           &trans  &bl BL_TOG
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp LEFT_ARROW  &trans          &kp RIGHT_ARROW  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans          &kp DOWN_ARROW  &trans           &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans          &trans
+&bl BL_TOG  &trans  &trans  &trans  &trans  &trans    &trans  &trans          &kp UP_ARROW    &trans           &trans  &bl BL_TOG
+&trans      &trans  &trans  &trans  &trans  &trans    &trans  &kp LEFT_ARROW  &trans          &kp RIGHT_ARROW  &trans  &trans
+&trans      &trans  &trans  &trans  &trans  &trans    &trans  &trans          &kp DOWN_ARROW  &trans           &trans  &trans
+                            &trans  &trans  &trans    &trans  &trans          &trans
             >;
         };
     };
