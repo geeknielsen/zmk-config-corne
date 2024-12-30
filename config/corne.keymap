@@ -8,32 +8,6 @@
             height = <122>;
             bus = <&spi1>;
         };
-
-        widgets {
-            battery {
-                compatible = "zmk,widget-battery-status";
-                x = <0>;
-                y = <0>;
-                width = <50>;
-                height = <20>;
-            };
-
-            layer {
-                compatible = "zmk,widget-layer-status";
-                x = <0>;
-                y = <20>;
-                width = <250>;
-                height = <20>;
-            };
-
-            logo {
-                compatible = "zmk,widget-logo";
-                x = <0>;
-                y = <80>;
-                width = <250>;
-                height = <50>;
-            };
-        };
     };
 };
 
