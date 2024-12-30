@@ -14,6 +14,53 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+    zmk,display {
+        compatible = "zmk,display";
+        label = "Nice!View";
+
+        screen {
+            width = <250>;
+            height = <122>;
+            bus = <&spi1>;
+        };
+
+        widgets {
+            battery {
+                compatible = "zmk,widget-battery-status";
+                x = <0>;
+                y = <0>;
+                width = <50>;
+                height = <20>;
+            };
+
+            output {
+                compatible = "zmk,widget-output-status";
+                x = <60>;
+                y = <0>;
+                width = <120>;
+                height = <20>;
+            };
+
+            layer {
+                compatible = "zmk,widget-layer-status";
+                x = <0>;
+                y = <40>;
+                width = <250>;
+                height = <20>;
+            };
+
+            logo {
+                compatible = "zmk,widget-logo";
+                x = <0>;
+                y = <70>;
+                width = <250>;
+                height = <50>;
+            };
+        };
+    };
+};
+
+/ {
     behaviors {
         hold_behavior: hold_behavior {
             compatible = "zmk,behavior-hold-tap";
