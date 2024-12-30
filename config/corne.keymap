@@ -1,41 +1,6 @@
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
-
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/backlight.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/pointing.h>
-#include <dt-bindings/zmk/mouse.h>
-#include <dt-bindings/zmk/rgb.h>
-#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/bt.h>
-
-/ {
-    zmk,display {
-        compatible = "zmk,display";
-        label = "Nice!View";
-
-        screen {
-            width = <128>;
-            height = <64>;
-            bus = <&spi1>;
-        };
-
-        widgets {
-            static_text {
-                compatible = "zmk,widget-static-text";
-                x = <0>;
-                y = <0>;
-                width = <128>;
-                height = <64>;
-                text = "Nice!View";  // Teksten, du vil vise på skærmen
-            };
-        };
-    };
-};
 
 / {
     behaviors {
