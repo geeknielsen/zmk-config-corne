@@ -19,13 +19,22 @@
         label = "Nice!View";
 
         screen {
-            width = <250>;
-            height = <122>;
+            width = <128>;
+            height = <64>;
             bus = <&spi1>;
+        };
+
+        widgets {
+            battery {
+                compatible = "zmk,widget-battery-status";
+                x = <0>;
+                y = <0>;
+                width = <128>;
+                height = <20>;
+            };
         };
     };
 };
-
 
 / {
     behaviors {
