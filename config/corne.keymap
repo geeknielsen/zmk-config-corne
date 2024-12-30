@@ -3,68 +3,33 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
-    behaviors {
-        hold_behavior: hold_behavior {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_BEHAVIOR";
-            bindings = <&mo>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-        };
-    };
-
-    macros {
-        mouse_up_left_macro: new_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&mmv MOVE_UP &mmv MOVE_LEFT>;
-            label = "NEW_MACRO";
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
-            // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-            // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-            //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
-
             bindings = <
-&kp ESCAPE    &kp Q  &kp W  &kp E               &kp R               &kp T                 &kp Y    &kp U  &kp I          &kp O          &kp P          &kp BSPC
-&kp LCTRL     &kp A  &kp S  &hold_behavior 2 D  &hold_behavior 1 F  &hold_behavior 3 G    &kp H    &kp J  &kp K          &kp L          &kp SEMI       &kp SQT
-&kp LEFT_ALT  &kp Z  &kp X  &kp C               &kp V               &kp B                 &kp N    &kp M  &kp SEMICOLON  &kp LS(COMMA)  &kp BACKSPACE  &kp DELETE
-                            &kp LGUI            &kp LEFT_SHIFT      &kp SPACE             &kp RET  &mo 0  &kp RALT
+                &kp TAB &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &kp BSPC
+                &kp LCTRL &kp A &kp S &kp D &kp F &kp G &kp H &kp J &kp K &kp L &kp SEMI &kp SQT
+                &kp LSHFT &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp ESC
+                &kp LGUI &mo 1 &kp SPACE &kp RET &mo 2 &kp RALT
             >;
         };
 
-        layer_1 {
+        lower_layer {
             bindings = <
-&bl BL_TOG  &none  &none  &trans  &none   &none     &none   &none           &kp UP_ARROW    &none            &none  &bl BL_TOG
-&trans      &none  &none  &none   &none   &none     &none   &kp LEFT_ARROW  &none           &kp RIGHT_ARROW  &none  &none
-&trans      &none  &none  &none   &none   &none     &none   &none           &kp DOWN_ARROW  &none            &none  &none
-                          &trans  &trans  &trans    &trans  &trans          &trans
+                &kp TAB &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp BSPC
+                &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
+                &kp LSHFT &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+                &kp LGUI &trans &kp SPACE &kp RET &trans &kp RALT
             >;
         };
 
-        layer_2 {
+        raise_layer {
             bindings = <
-&none   &none  &none  &trans  &none   &none     &none   &mouse_up_left_macro  &mmv MOVE_UP    &none            &none  &none
-&trans  &none  &none  &none   &none   &none     &none   &mmv MOVE_LEFT        &none           &mmv MOVE_RIGHT  &none  &none
-&trans  &none  &none  &none   &none   &none     &none   &none                 &mmv MOVE_DOWN  &none            &none  &none
-                      &trans  &trans  &trans    &trans  &trans                &trans
-            >;
-        };
-
-        layer_3 {
-            bindings = <
-&none   &none  &none  &trans  &none   &none     &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &none  &none
-&trans  &none  &none  &none   &none   &none     &none            &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &none  &none
-&trans  &none  &none  &none   &none   &none     &none            &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &none  &none
-                      &trans  &trans  &trans    &trans           &trans           &trans
+                &kp TAB &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT &kp CARET &kp AMPS &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
+                &kp LCTRL &trans &trans &trans &trans &trans &kp MINUS &kp EQUAL &kp LBKT &kp RBKT &kp BSLH &kp GRAVE
+                &kp LSHFT &trans &trans &trans &trans &trans &kp UNDER &kp PLUS &kp LBRC &kp RBRC &kp PIPE &kp TILDE
+                &kp LGUI &trans &kp SPACE &kp RET &trans &kp RALT
             >;
         };
     };
