@@ -25,12 +25,13 @@
         };
 
         widgets {
-            battery {
-                compatible = "zmk,widget-battery-status";
+            static_text {
+                compatible = "zmk,widget-static-text";
                 x = <0>;
                 y = <0>;
                 width = <128>;
-                height = <20>;
+                height = <64>;
+                text = "Nice!View";  // Teksten, du vil vise på skærmen
             };
         };
     };
