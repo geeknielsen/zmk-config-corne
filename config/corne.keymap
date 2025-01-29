@@ -6,11 +6,8 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/backlight.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
-#include <dt-bindings/zmk/rgb.h>
 
 / {
     chosen { zmk,underglow = &led_strip; };
@@ -77,10 +74,10 @@
 
         layer_3 {
             bindings = <
-&none   &none  &none  &trans  &none   &none     &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &none  &none
-&trans  &none  &none  &none   &none   &none     &none            &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &none  &none
-&trans  &none  &none  &none   &none   &none     &none            &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &none  &none
-                      &trans  &trans  &trans    &trans           &trans           &trans
+&soft_off  &none  &none  &trans  &none   &none     &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &none  &none
+&trans     &none  &none  &none   &none   &none     &none            &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &none  &none
+&trans     &none  &none  &none   &none   &none     &none            &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &none  &none
+                         &trans  &trans  &trans    &trans           &trans           &trans
             >;
         };
     };
