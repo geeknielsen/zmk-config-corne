@@ -68,7 +68,7 @@
         layer_Pile {
             bindings = <
 &bl BL_TOG  &none  &none  &trans  &none   &none     &none   &none           &kp UP_ARROW    &none            &none  &bl BL_TOG
-&trans      &none  &none  &none   &none   &none     &none   &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &none  &none
+&trans      &none  &none  &none   &none   &mo 6     &none   &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &none  &none
 &trans      &none  &none  &none   &none   &none     &none   &none           &none           &none            &none  &none
                           &trans  &trans  &trans    &trans  &trans          &trans
             >;
@@ -85,10 +85,10 @@
 
         layer_Calculator {
             bindings = <
-&soft_off  &none  &none  &trans  &none   &none     &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &none  &none
-&trans     &none  &none  &none   &none   &none     &none            &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &none  &none
-&trans     &none  &none  &none   &none   &none     &none            &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &none  &none
-                         &trans  &trans  &trans    &trans           &trans           &trans
+&soft_off  &none  &none  &trans  &none   &none     &kp MINUS  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9
+&trans     &none  &none  &none   &none   &none     &kp PLUS   &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_NUMBER_4
+&trans     &none  &none  &none   &none   &none     &kp EQUAL  &kp ASTERISK     &kp KP_DIVIDE    &none            &none            &none
+                         &trans  &trans  &trans    &trans     &trans           &trans
             >;
         };
 
@@ -107,6 +107,15 @@
 &trans           &none  &none  &none   &none   &none     &none   &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT  &none  &none
 &trans           &none  &none  &none   &none   &none     &none   &none           &none           &none            &none  &none
                                &trans  &trans  &trans    &trans  &trans          &trans
+            >;
+        };
+
+        layer_Home_End {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans    &kp PAGE_UP    &trans   &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp HOME  &kp PAGE_DOWN  &kp END  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans    &trans         &trans   &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans    &trans
             >;
         };
     };
