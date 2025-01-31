@@ -13,18 +13,6 @@
 #define ZMK_MOUSE_DEFAULT_MOVE_VAL 1500  // 600
 #define ZMK_MOUSE_DEFAULT_SCRL_VAL 20    // 10
 
-&mmv {
-  acceleration-exponent = <1>;      // 1
-  time-to-max-speed-ms = <500>;     // 300
-  delay-ms = <0>;                   // 0
-};
-
-&msc {
-  acceleration-exponent = <1>;      // 0
-  time-to-max-speed-ms = <100>;     // 300
-  delay-ms = <0>;                   // 0
-};
-
 / {
     chosen { zmk,underglow = &led_strip; };
 };
@@ -91,7 +79,7 @@
         layer_Mouse {
             bindings = <
 &none   &none  &none  &trans  &none   &none     &none   &mouse_up_left_macro  &mmv MOVE_UP    &none            &none  &none
-&trans  &none  &none  &none   &none   &none     &none   &mmv MOVE_LEFT        &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none
+&trans  &none  &none  &none   &none   &mo 5     &none   &mmv MOVE_LEFT        &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none
 &trans  &none  &none  &none   &none   &none     &none   &none                 &none           &none            &none  &none
                       &trans  &trans  &trans    &trans  &trans                &trans
             >;
