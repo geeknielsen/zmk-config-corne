@@ -31,15 +31,6 @@
         };
     };
 
-    macros {
-        mouse_up_left_macro: new_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&mmv MOVE_UP &mmv MOVE_LEFT>;
-            label = "NEW_MACRO";
-        };
-    };
-
     combos {
         compatible = "zmk,combos";
 
