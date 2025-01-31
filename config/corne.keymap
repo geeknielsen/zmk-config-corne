@@ -31,15 +31,6 @@
         };
     };
 
-//    combos {
-//        compatible = "zmk,combos";
-//
-//        combo_Mouse_Scroll {
-//            bindings = <&mo 5>;
-//            key-positions = <15 17>;
-//        };
-//    };
-
     keymap {
         compatible = "zmk,keymap";
 
