@@ -78,7 +78,7 @@
 
         layer_Mouse {
             bindings = <
-&none   &none  &none  &trans  &none   &none     &none   &mouse_up_left_macro  &mmv MOVE_UP    &none            &none  &none
+&none   &none  &none  &trans  &none   &none     &none   &none                 &mmv MOVE_UP    &none            &none  &none
 &trans  &none  &none  &none   &mo 4   &mo 5     &none   &mmv MOVE_LEFT        &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none
 &trans  &none  &none  &none   &none   &none     &none   &none                 &none           &none            &none  &none
                       &trans  &trans  &trans    &trans  &trans                &trans
@@ -96,7 +96,7 @@
 
         layer_Mouse_Fast {
             bindings = <
-&kp KP_NUMBER_4  &kp NUMBER_4  &none  &trans  &none   &none     &none   &none  &mmv MOVE_Y(-100)  &none             &none  &none
+&kp KP_NUMBER_4  &kp NUMBER_4  &none  &trans  &none   &none     &none   &none                 &mmv MOVE_Y(-100)  &none             &none  &none
 &trans           &none         &none  &none   &none   &none     &none   &mmv MOVE_X(-100)     &mmv MOVE_Y(100)   &mmv MOVE_X(100)  &none  &none
 &trans           &none         &none  &none   &none   &none     &none   &none                 &none              &none             &none  &none
                                       &trans  &trans  &trans    &trans  &trans                &trans
@@ -105,7 +105,7 @@
 
         layer_Mouse_Scroll {
             bindings = <
-&kp KP_NUMBER_5  &none  &none  &trans  &none   &none     &none   &mouse_up_left_macro  &msc SCRL_UP    &none            &none  &none
+&kp KP_NUMBER_5  &none  &none  &trans  &none   &none     &none   &none                 &msc SCRL_UP    &none            &none  &none
 &trans           &none  &none  &none   &none   &none     &none   &msc SCRL_LEFT        &msc SCRL_DOWN  &msc SCRL_RIGHT  &none  &none
 &trans           &none  &none  &none   &none   &none     &none   &none                 &none           &none            &none  &none
                                &trans  &trans  &trans    &trans  &trans                &trans
