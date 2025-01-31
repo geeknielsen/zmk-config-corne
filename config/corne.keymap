@@ -78,10 +78,10 @@
 
         layer_Mouse_Fast {
             bindings = <
-&kp KP_NUMBER_4  &kp NUMBER_4  &none  &trans  &none   &none     &none   &none                 &mmv MOVE_Y(-100)  &none             &none  &none
-&trans           &none         &none  &none   &none   &none     &none   &mmv MOVE_X(-100)     &mmv MOVE_Y(100)   &mmv MOVE_X(100)  &none  &none
-&trans           &none         &none  &none   &none   &none     &none   &none                 &none              &none             &none  &none
-                                      &trans  &trans  &trans    &trans  &trans                &trans
+&kp KP_NUMBER_4  &kp NUMBER_4  &none  &trans  &none   &none     &none   &none     &none   &none  &none  &none
+&trans           &none         &none  &none   &none   &none     &none   &none     &none   &none  &none  &none
+&trans           &none         &none  &none   &none   &none     &none   &none     &none   &none  &none  &none
+                                      &trans  &trans  &trans    &trans  &trans    &trans
             >;
         };
 
