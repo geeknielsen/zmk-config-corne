@@ -122,10 +122,10 @@
 
         layer_signs {
             bindings = <
-&trans  &bl BL_TOG  &bl BL_TOG  &none   &none   &none     &kp LEFT_BRACE        &kp RIGHT_BRACE        &none   &none  &none  &none
-&trans  &none       &none       &none   &none   &none     &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &none   &none  &none  &none
-&trans  &none       &none       &none   &none   &none     &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &none   &none  &none  &none
-                                &trans  &trans  &trans    &trans                &trans                 &trans
+&trans  &bl BL_TOG  &bl BL_TOG  &none   &none   &none     &kp DA_LEFT_BRACE        &kp DA_RIGHT_BRACE        &none   &none  &none  &none
+&trans  &none       &none       &none   &none   &none     &kp DA_LEFT_PARENTHESIS  &kp DA_RIGHT_PARENTHESIS  &none   &none  &none  &none
+&trans  &none       &none       &none   &none   &none     &kp DA_LEFT_BRACKET      &kp DA_RIGHT_BRACKET      &none   &none  &none  &none
+                                &trans  &trans  &trans    &trans                   &trans                    &trans
             >;
         };
     };
