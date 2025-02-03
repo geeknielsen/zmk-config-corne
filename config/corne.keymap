@@ -86,10 +86,10 @@
 
         layer_Calculator {
             bindings = <
-&soft_off  &none  &none  &trans  &none   &none     &kp MINUS  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9
-&trans     &none  &none  &none   &none   &none     &kp PLUS   &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_NUMBER_4
-&trans     &none  &none  &none   &none   &none     &kp EQUAL  &kp ASTERISK     &kp KP_DIVIDE    &none            &none            &none
-                         &trans  &trans  &trans    &trans     &trans           &trans
+&soft_off  &none  &none  &trans  &none   &none     &kp MINUS  &kp DA_N5     &kp DA_N6        &kp DA_N7        &kp DA_N8        &kp DA_N9
+&trans     &none  &none  &none   &none   &none     &kp PLUS   &kp DA_N0     &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_NUMBER_4
+&trans     &none  &none  &none   &none   &none     &kp EQUAL  &kp ASTERISK  &kp KP_DIVIDE    &none            &none            &none
+                         &trans  &trans  &trans    &trans     &trans        &trans
             >;
         };
 
