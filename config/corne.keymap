@@ -86,9 +86,9 @@
 
         layer_Calculator {
             bindings = <
-&soft_off  &none  &none  &trans  &none   &none     &kp DA_MINUS  &kp DA_N5        &kp DA_N6        &kp DA_N7        &kp DA_N8        &kp DA_N9
-&trans     &none  &none  &none   &none   &none     &kp DA_PLUS   &kp DA_N0        &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_NUMBER_4
-&trans     &none  &none  &none   &none   &none     &kp DA_EQUAL  &kp DA_ASTERISK  &kp DA_SLASH     &none            &none            &none
+&soft_off  &none  &none  &trans  &none   &none     &kp DA_MINUS  &kp DA_N5        &kp DA_N6     &kp DA_N7  &kp DA_N8  &kp DA_N9
+&trans     &none  &none  &none   &none   &none     &kp DA_PLUS   &kp DA_N0        &kp DA_N1     &kp DA_N2  &kp DA_N3  &kp DA_N4
+&trans     &none  &none  &none   &none   &none     &kp DA_EQUAL  &kp DA_ASTERISK  &kp DA_SLASH  &none      &none      &none
                          &trans  &trans  &trans    &trans        &trans           &trans
             >;
         };
