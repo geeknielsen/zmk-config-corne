@@ -59,10 +59,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp TAB               &kp Q  &kp W  &kp E               &hold_behavior 7 R  &kp T                 &kp Y    &kp U        &kp I                    &kp O          &kp P          &kp DA_A_RING
-&behavior_shift_caps  &kp A  &kp S  &hold_behavior 2 D  &hold_behavior 1 F  &hold_behavior 3 G    &kp H    &kp J        &kp K                    &kp L          &kp DA_AE      &kp DA_O_SLASH
-&kp LCTRL             &kp Z  &kp X  &kp C               &kp V               &kp B                 &kp N    &kp M        &kp SEMICOLON            &kp LS(COMMA)  &kp BACKSPACE  &kp DELETE
-                                    &kp LEFT_ALT        &kp LEFT_WIN        &kp SPACE             &kp RET  &key_repeat  &behavior_del_backspace
+&kp TAB               &kp DA_Q  &kp DA_W  &kp DA_E               &hold_behavior 7 DA_R  &kp DA_T                 &kp DA_Y  &kp DA_U     &kp DA_I                 &kp DA_O       &kp DA_P       &kp DA_A_RING
+&behavior_shift_caps  &kp DA_A  &kp DA_S  &hold_behavior 2 DA_D  &hold_behavior 1 DA_F  &hold_behavior 3 DA_G    &kp DA_H  &kp DA_J     &kp DA_K                 &kp DA_L       &kp DA_AE      &kp DA_O_SLASH
+&kp LCTRL             &kp DA_Z  &kp DA_X  &kp DA_C               &kp DA_V               &kp DA_B                 &kp DA_N  &kp DA_M     &kp SEMICOLON            &kp LS(COMMA)  &kp BACKSPACE  &kp DELETE
+                                          &kp LEFT_ALT           &kp LEFT_WIN           &kp SPACE                &kp RET   &key_repeat  &behavior_del_backspace
             >;
         };
 
