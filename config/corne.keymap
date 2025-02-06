@@ -7,6 +7,7 @@
 #include "keys_da.h"
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/backlight.h>
+#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/pointing.h>
@@ -128,10 +129,10 @@
 
         layer_Calculator {
             bindings = <
-&soft_off  &none  &none  &trans  &none   &none     &kp DA_MINUS  &kp DA_N5        &kp DA_N6      &kp DA_N7     &kp DA_N8     &kp DA_N9
-&trans     &none  &none  &none   &none   &none     &kp DA_PLUS   &kp DA_N0        &kp DA_N1      &kp DA_N2     &kp DA_N3     &kp DA_N4
-&trans     &none  &none  &none   &none   &none     &kp DA_EQUAL  &kp DA_ASTERISK  &kp DA_PERIOD  &kp DA_COMMA  &kp DA_SLASH  &kp DA_BACKSLASH
-                         &trans  &trans  &trans    &trans        &trans           &trans
+&none   &none  &none  &trans  &none   &none     &kp DA_MINUS  &kp DA_N5        &kp DA_N6      &kp DA_N7     &kp DA_N8     &kp DA_N9
+&trans  &none  &none  &none   &none   &none     &kp DA_PLUS   &kp DA_N0        &kp DA_N1      &kp DA_N2     &kp DA_N3     &kp DA_N4
+&trans  &none  &none  &none   &none   &none     &kp DA_EQUAL  &kp DA_ASTERISK  &kp DA_PERIOD  &kp DA_COMMA  &kp DA_SLASH  &kp DA_BACKSLASH
+                      &trans  &trans  &trans    &trans        &trans           &trans
             >;
 
             label = "Calc";
@@ -172,10 +173,10 @@
 
         layer_signs {
             bindings = <
-&trans  &bl BL_TOG  &bl BL_TOG  &none   &none   &none     &kp DA_LEFT_BRACE        &kp DA_RIGHT_BRACE        &kp DA_PERCENT    &kp DA_HASH          &none        &none
-&trans  &none       &none       &none   &none   &none     &kp DA_LEFT_PARENTHESIS  &kp DA_RIGHT_PARENTHESIS  &kp DA_LESS_THAN  &kp DA_GREATER_THAN  &kp DA_PIPE  &none
-&trans  &none       &none       &none   &none   &none     &kp DA_LEFT_BRACKET      &kp DA_RIGHT_BRACKET      &kp DA_AMPERSAND  &kp DA_UNDERSCORE    &none        &none
-                                &trans  &trans  &trans    &trans                   &trans                    &trans
+&trans  &none  &none  &kp DA_ESCAPE_CHARACTER  &none   &none     &kp DA_LEFT_BRACE        &kp DA_RIGHT_BRACE        &kp DA_PERCENT    &kp DA_HASH          &none        &none
+&trans  &none  &none  &none                    &none   &none     &kp DA_LEFT_PARENTHESIS  &kp DA_RIGHT_PARENTHESIS  &kp DA_LESS_THAN  &kp DA_GREATER_THAN  &kp DA_PIPE  &none
+&trans  &none  &none  &none                    &none   &none     &kp DA_LEFT_BRACKET      &kp DA_RIGHT_BRACKET      &kp DA_AMPERSAND  &kp DA_UNDERSCORE    &none        &none
+                      &trans                   &trans  &trans    &trans                   &trans                    &trans
             >;
 
             label = "Signs";
@@ -183,10 +184,10 @@
 
         layer_Corne {
             bindings = <
-&none  &none  &none  &none  &none  &none    &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &none    &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &none    &none  &none  &none  &none  &none  &none
-                     &none  &none  &none    &none  &none  &none
+&soft_off  &none  &none  &none  &none  &none    &bl BL_TOG  &none       &none  &none  &none  &none
+&none      &none  &none  &none  &none  &none    &bl BL_INC  &bt BT_NXT  &none  &none  &none  &none
+&none      &none  &none  &none  &none  &none    &bl BL_DEC  &bt BT_PRV  &none  &none  &none  &none
+                         &none  &none  &none    &none       &none       &none
             >;
 
             label = "Corne";
