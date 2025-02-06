@@ -47,10 +47,10 @@
             mods = <(MOD_LSFT)>;
         };
 
-        behavior_dot_comma: behavior_dot_comma {
+        behavior_dot_colons: behavior_dot_colons {
             compatible = "zmk,behavior-mod-morph";
-            label = "BEHAVIOR_DOT_COMMA";
-            bindings = <&kp DA_PERIOD>, <&kp DA_COMMA>;
+            label = "BEHAVIOR_DOT_COLONS";
+            bindings = <&kp DA_COLON>, <&kp DA_SEMICOLON>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
@@ -79,7 +79,7 @@
             bindings = <
 &kp TAB               &kp DA_Q  &kp DA_W  &kp DA_E               &hold_behavior 7 DA_R  &kp DA_T                 &kp DA_Y  &kp DA_U     &kp DA_I                 &kp DA_O     &kp DA_P       &kp DA_A_RING
 &behavior_shift_caps  &kp DA_A  &kp DA_S  &hold_behavior 2 DA_D  &hold_behavior 1 DA_F  &hold_behavior 3 DA_G    &kp DA_H  &kp DA_J     &kp DA_K                 &kp DA_L     &kp DA_AE      &kp DA_O_SLASH
-&kp LCTRL             &kp DA_Z  &kp DA_X  &kp DA_C               &kp DA_V               &kp DA_B                 &kp DA_N  &kp DA_M     &behavior_dot_comma      &new_quotes  &kp BACKSPACE  &kp DELETE
+&kp LCTRL             &kp DA_Z  &kp DA_X  &kp DA_C               &kp DA_V               &kp DA_B                 &kp DA_N  &kp DA_M     &behavior_dot_colons     &new_quotes  &kp BACKSPACE  &kp DELETE
                                           &kp LEFT_ALT           &kp LEFT_WIN           &kp SPACE                &kp RET   &key_repeat  &behavior_del_backspace
             >;
         };
@@ -104,9 +104,9 @@
 
         layer_Calculator {
             bindings = <
-&soft_off  &none  &none  &trans  &none   &none     &kp DA_MINUS  &kp DA_N5        &kp DA_N6     &kp DA_N7      &kp DA_N8     &kp DA_N9
-&trans     &none  &none  &none   &none   &none     &kp DA_PLUS   &kp DA_N0        &kp DA_N1     &kp DA_N2      &kp DA_N3     &kp DA_N4
-&trans     &none  &none  &none   &none   &none     &kp DA_EQUAL  &kp DA_ASTERISK  &kp DA_SLASH  &kp DA_PERIOD  &kp DA_COMMA  &none
+&soft_off  &none  &none  &trans  &none   &none     &kp DA_MINUS  &kp DA_N5        &kp DA_N6      &kp DA_N7     &kp DA_N8     &kp DA_N9
+&trans     &none  &none  &none   &none   &none     &kp DA_PLUS   &kp DA_N0        &kp DA_N1      &kp DA_N2     &kp DA_N3     &kp DA_N4
+&trans     &none  &none  &none   &none   &none     &kp DA_EQUAL  &kp DA_ASTERISK  &kp DA_PERIOD  &kp DA_COMMA  &kp DA_SLASH  &kp DA_BACKSLASH
                          &trans  &trans  &trans    &trans        &trans           &trans
             >;
         };
@@ -140,9 +140,9 @@
 
         layer_signs {
             bindings = <
-&trans  &bl BL_TOG  &bl BL_TOG  &none   &none   &none     &kp DA_LEFT_BRACE        &kp DA_RIGHT_BRACE        &none   &none  &none  &none
-&trans  &none       &none       &none   &none   &none     &kp DA_LEFT_PARENTHESIS  &kp DA_RIGHT_PARENTHESIS  &none   &none  &none  &none
-&trans  &none       &none       &none   &none   &none     &kp DA_LEFT_BRACKET      &kp DA_RIGHT_BRACKET      &none   &none  &none  &none
+&trans  &bl BL_TOG  &bl BL_TOG  &none   &none   &none     &kp DA_LEFT_BRACE        &kp DA_RIGHT_BRACE        &none             &none                &none  &none
+&trans  &none       &none       &none   &none   &none     &kp DA_LEFT_PARENTHESIS  &kp DA_RIGHT_PARENTHESIS  &kp DA_LESS_THAN  &kp DA_GREATER_THAN  &none  &none
+&trans  &none       &none       &none   &none   &none     &kp DA_LEFT_BRACKET      &kp DA_RIGHT_BRACKET      &none             &none                &none  &none
                                 &trans  &trans  &trans    &trans                   &trans                    &trans
             >;
         };
