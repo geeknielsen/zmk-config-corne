@@ -174,10 +174,10 @@
 
         layer_signs {
             bindings = <
-&trans  &none  &none  &kp DA_ESCAPE_CHARACTER  &none   &none     &kp DA_LEFT_BRACE        &kp DA_RIGHT_BRACE        &kp DA_PERCENT    &kp DA_HASH          &none        &none
-&trans  &none  &none  &none                    &none   &none     &kp DA_LEFT_PARENTHESIS  &kp DA_RIGHT_PARENTHESIS  &kp DA_LESS_THAN  &kp DA_GREATER_THAN  &kp DA_PIPE  &none
-&trans  &none  &none  &none                    &none   &none     &kp DA_LEFT_BRACKET      &kp DA_RIGHT_BRACKET      &kp DA_AMPERSAND  &kp DA_UNDERSCORE    &none        &none
-                      &trans                   &trans  &trans    &trans                   &trans                    &trans
+&trans  &none              &none           &kp DA_ESCAPE_CHARACTER  &none   &none     &kp DA_LEFT_BRACE        &kp DA_RIGHT_BRACE        &kp DA_PERCENT    &kp DA_HASH          &kp DA_TILDE  &kp DA_CURRENCY_SIGN
+&trans  &kp DA_ACUTE       &kp DA_GRAVE    &kp DA_UMLAUT            &none   &none     &kp DA_LEFT_PARENTHESIS  &kp DA_RIGHT_PARENTHESIS  &kp DA_LESS_THAN  &kp DA_GREATER_THAN  &kp DA_PIPE   &kp DA_ONE_HALF
+&trans  &kp DA_POUND_SIGN  &kp DA_SECTION  &kp DA_MU                &none   &none     &kp DA_LEFT_BRACKET      &kp DA_RIGHT_BRACKET      &kp DA_AMPERSAND  &kp DA_UNDERSCORE    &kp DA_CARET  &kp DA_EURO
+                                           &trans                   &trans  &trans    &trans                   &trans                    &trans
             >;
 
             label = "Signs";
