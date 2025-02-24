@@ -86,6 +86,15 @@
         };
     };
 
+    macros {
+        SoftLockOff: SoftLockOff {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(DA_L) &soft_off>;
+            label = "SOFTLOCKOFF";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -185,7 +194,7 @@
 
         layer_Corne {
             bindings = <
-&soft_off  &none  &none  &none  &none  &none    &bl BL_TOG  &none       &none  &none  &none  &none
+&soft_off  &none  &none  &none  &none  &none    &bl BL_TOG  &none       &none  &none  &none  &SoftLockOff
 &none      &none  &none  &none  &none  &none    &bl BL_INC  &bt BT_NXT  &none  &none  &none  &none
 &none      &none  &none  &none  &none  &none    &bl BL_DEC  &bt BT_PRV  &none  &none  &none  &none
                          &none  &none  &none    &none       &none       &none
@@ -203,6 +212,17 @@
             >;
 
             label = "VS";
+        };
+
+        layer_Functions {
+            bindings = <
+&none  &none  &none  &none  &none  &none    &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none    &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none    &none  &none  &none  &none  &none  &none
+                     &none  &none  &none    &none  &none  &none
+            >;
+
+            label = "Functions";
         };
     };
 };
