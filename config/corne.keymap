@@ -22,6 +22,13 @@
 
 // &led_strip { chain-length = <27>; };
 
+&mmv_input_listener {
+    set_mouse_fast {
+        layers = <layer_Mouse_Fast>;
+        input-processors = <&zip_xy_scaler 2 1>;
+    };
+};
+
 / {
     behaviors {
         hold_behavior: hold_behavior {
