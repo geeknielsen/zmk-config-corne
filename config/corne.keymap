@@ -138,7 +138,7 @@
 &trans  &none  &none  &trans  &none   &none     &none      &none           &mmv MOVE_UP    &none            &none  &none
 &trans  &none  &none  &none   &mo 4   &mo 5     &none      &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none
 &trans  &none  &none  &none   &none   &none     &none      &none           &none           &none            &none  &none
-                      &trans  &trans  &trans    &mkp LCLK  &mkp RCLK       &mkp MCLK
+                      &trans  &trans  &trans    &mkp LCLK  &mkp MB2        &mkp MCLK
             >;
 
             label = "Mouse";
@@ -157,10 +157,10 @@
 
         layer_Mouse_Fast {
             bindings = <
-&trans  &none  &none  &trans  &none   &none     &none   &none   &none   &none  &none  &none
-&trans  &none  &none  &none   &none   &none     &none   &none   &none   &none  &none  &none
-&trans  &none  &none  &none   &none   &none     &none   &none   &none   &none  &none  &none
-                      &trans  &trans  &trans    &trans  &trans  &trans
+&trans  &none  &none  &trans  &none   &none     &none      &none           &mmv MOVE_UP    &none            &none  &none
+&trans  &none  &none  &none   &none   &none     &none      &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none
+&trans  &none  &none  &none   &none   &none     &none      &none           &none           &none            &none  &none
+                      &trans  &trans  &trans    &mkp LCLK  &mkp MB2        &mkp MCLK
             >;
 
             label = "Mouse_Fast";
