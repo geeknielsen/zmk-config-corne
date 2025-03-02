@@ -10,8 +10,6 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
-#include <dt-bindings/zmk/pointing.h>
-#include <dt-bindings/zmk/pointing.h>
 
 #define ZMK_MOUSE_DEFAULT_MOVE_VAL 1500  // 600
 #define ZMK_MOUSE_DEFAULT_SCRL_VAL 20    // 10
@@ -157,7 +155,7 @@
             label = "Calc";
         };
 
-        layer_Mouse_Fast {
+        CONST_LAYER-MOUSE-FAST {
             bindings = <
 &trans  &none  &none  &trans  &none   &none     &none      &none           &mmv MOVE_UP    &none            &none  &none
 &trans  &none  &none  &none   &none   &none     &none      &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none
