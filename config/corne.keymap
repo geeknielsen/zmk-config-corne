@@ -208,10 +208,10 @@
 
         layer_Corne {
             bindings = <
-&soft_off  &none  &none  &none  &none  &none    &bl BL_TOG  &none       &none  &none  &none  &SoftLockOff
-&none      &none  &none  &none  &none  &none    &bl BL_INC  &bt BT_NXT  &none  &none  &none  &none
-&none      &none  &none  &none  &none  &none    &bl BL_DEC  &bt BT_PRV  &none  &none  &none  &none
-                         &none  &none  &none    &none       &none       &none
+&soft_off   &none  &none  &none  &none  &none    &bl BL_TOG  &none       &none  &none  &none  &SoftLockOff
+&none       &none  &none  &none  &none  &none    &bl BL_INC  &bt BT_NXT  &none  &none  &none  &none
+&caps_word  &none  &none  &none  &none  &none    &bl BL_DEC  &bt BT_PRV  &none  &none  &none  &none
+                          &none  &none  &none    &none       &none       &none
             >;
 
             label = "Corne";
