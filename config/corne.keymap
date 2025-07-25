@@ -122,7 +122,7 @@
             bindings = <
 &kp TAB               &kp DA_Q  &kp DA_W  &kp DA_E               &hold_behavior 7 DA_R  &kp DA_T                 &kp DA_Y  &kp DA_U      &kp DA_I                 &kp DA_O     &kp DA_P               &kp DA_A_RING
 &behavior_shift_caps  &kp DA_A  &kp DA_S  &hold_behavior 2 DA_D  &hold_behavior 1 DA_F  &hold_behavior 3 DA_G    &kp DA_H  &kp DA_J      &kp DA_K                 &kp DA_L     &kp DA_AE              &kp DA_O_SLASH
-&behavior_CTRL_ESC    &kp DA_Z  &kp DA_X  &hold_behavior 8 DA_C  &hold_behavior 9 DA_V  &kp DA_B                 &kp DA_N  &kp DA_M      &behavior_dot_colons     &new_quotes  &behavior_queston_exc  &behavior_at_doller
+&behavior_CTRL_ESC    &kp DA_Z  &kp DA_X  &hold_behavior 8 DA_C  &kp A                  &kp DA_B                 &kp DA_N  &kp DA_M      &behavior_dot_colons     &new_quotes  &behavior_queston_exc  &behavior_at_doller
                                           &kp LEFT_ALT           &kp LEFT_WIN           &key_repeat              &kp RET   &kp DA_SPACE  &behavior_del_backspace
             >;
 
