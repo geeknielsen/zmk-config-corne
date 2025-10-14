@@ -131,7 +131,7 @@
 
         layer_Pile {
             bindings = <
-&trans  &none  &none  &trans  &none   &none     &none   &none           &kp UP_ARROW    &none            &none  &none
+&trans  &none  &none  &none   &none   &none     &none   &none           &kp UP_ARROW    &none            &none  &none
 &trans  &none  &none  &mo 6   &none   &none     &none   &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &none  &none
 &trans  &none  &none  &none   &none   &none     &none   &none           &none           &none            &none  &none
                       &trans  &trans  &trans    &trans  &trans          &trans
@@ -142,7 +142,7 @@
 
         layer_Mouse {
             bindings = <
-&trans  &none  &none  &trans  &none   &none     &none      &none           &mmv MOVE_UP    &none            &none  &none
+&trans  &none  &none  &none   &none   &none     &none      &none           &mmv MOVE_UP    &none            &none  &none
 &trans  &none  &none  &none   &mo 4   &mo 5     &none      &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none
 &trans  &none  &none  &none   &none   &none     &none      &none           &none           &none            &none  &none
                       &trans  &trans  &trans    &mkp LCLK  &mkp MB2        &mkp MCLK
@@ -153,7 +153,7 @@
 
         layer_Calculator {
             bindings = <
-&none   &none  &none  &trans  &none   &none     &kp DA_COMMA  &kp DA_N7    &kp DA_N8     &kp DA_N9  &none  &kp DA_ASTERISK
+&trans  &none  &none  &none   &none   &none     &kp DA_COMMA  &kp DA_N7    &kp DA_N8     &kp DA_N9  &none  &kp DA_ASTERISK
 &trans  &none  &none  &none   &none   &none     &kp DA_DOT    &kp DA_N4    &kp DA_N5     &kp DA_N6  &none  &kp DA_SLASH
 &trans  &none  &none  &none   &none   &none     &kp DA_N0     &kp DA_N1    &kp DA_N2     &kp DA_N3  &none  &kp DA_BACKSLASH
                       &trans  &trans  &trans    &kp DA_EQUAL  &kp DA_PLUS  &kp DA_MINUS
@@ -164,7 +164,7 @@
 
         layer_Mouse_Fast {
             bindings = <
-&trans  &none  &none  &trans  &none   &none     &none      &none           &mmv MOVE_UP    &none            &none  &none
+&trans  &none  &none  &none   &none   &none     &none      &none           &mmv MOVE_UP    &none            &none  &none
 &trans  &none  &none  &none   &none   &none     &none      &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none
 &trans  &none  &none  &none   &none   &none     &none      &none           &none           &none            &none  &none
                       &trans  &trans  &trans    &mkp LCLK  &mkp MB2        &mkp MCLK
@@ -175,7 +175,7 @@
 
         layer_Mouse_Scroll {
             bindings = <
-&trans  &none  &none  &trans  &none   &none     &none   &none           &msc SCRL_UP    &none            &none  &none
+&trans  &none  &none  &none   &none   &none     &none   &none           &msc SCRL_UP    &none            &none  &none
 &trans  &none  &none  &none   &none   &none     &none   &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT  &none  &none
 &trans  &none  &none  &none   &none   &none     &none   &none           &none           &none            &none  &none
                       &trans  &trans  &trans    &trans  &trans          &trans
@@ -219,7 +219,7 @@
 
         layer_Visual_studio {
             bindings = <
-&trans  &none  &none  &trans  &none   &none     &none   &none   &none   &none  &none  &none
+&trans  &none  &none  &none   &none   &none     &none   &none   &none   &none  &none  &none
 &trans  &none  &none  &none   &none   &none     &none   &none   &none   &none  &none  &none
 &trans  &none  &none  &none   &none   &none     &none   &none   &none   &none  &none  &none
                       &trans  &trans  &trans    &trans  &trans  &trans
