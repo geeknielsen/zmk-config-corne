@@ -153,10 +153,10 @@
 
         layer_Calculator {
             bindings = <
-&none   &none  &none  &trans  &none   &none     &kp DA_MINUS  &kp DA_N1  &kp DA_N2  &kp DA_N3  &kp DA_COMMA   &kp DA_ASTERISK
-&trans  &none  &none  &none   &none   &none     &kp DA_PLUS   &kp DA_N4  &kp DA_N5  &kp DA_N6  &kp DA_PERIOD  &kp DA_SLASH
-&trans  &none  &none  &none   &none   &none     &kp DA_EQUAL  &kp DA_N7  &kp DA_N8  &kp DA_N9  &kp DA_N0      &kp DA_BACKSLASH
-                      &trans  &trans  &trans    &trans        &trans     &trans
+&none   &none  &none  &trans  &none   &none     &kp DA_COMMA  &kp DA_N7    &kp DA_N8     &kp DA_N9  &none  &kp DA_ASTERISK
+&trans  &none  &none  &none   &none   &none     &kp DA_DOT    &kp DA_N4    &kp DA_N5     &kp DA_N6  &none  &kp DA_SLASH
+&trans  &none  &none  &none   &none   &none     &kp DA_N0     &kp DA_N1    &kp DA_N2     &kp DA_N3  &none  &kp DA_BACKSLASH
+                      &trans  &trans  &trans    &kp DA_EQUAL  &kp DA_PLUS  &kp DA_MINUS
             >;
 
             label = "Calc";
@@ -230,8 +230,8 @@
 
         layer_Functions {
             bindings = <
-&trans  &none  &none  &none   &none   &none     &kp F1           &kp F2   &kp F3  &kp F4   &kp F5   &kp F6
 &trans  &none  &none  &none   &none   &none     &kp F7           &kp F8   &kp F9  &kp F10  &kp F11  &kp F12
+&trans  &none  &none  &none   &none   &none     &kp F1           &kp F2   &kp F3  &kp F4   &kp F5   &kp F6
 &trans  &none  &none  &none   &none   &none     &kp PRINTSCREEN  &kp INS  &none   &none    &none    &none
                       &trans  &trans  &trans    &trans           &trans   &trans
             >;
