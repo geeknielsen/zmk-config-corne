@@ -1,40 +1,14 @@
 / {
-    ws2812_leds: ws2812 {
+    ws2812: ws2812 {
         compatible = "worldsemi,ws2812";
         label = "WS2812";
         chain-length = <54>;
         color-mapping = <GRB>;
-
-        // Brug fuldt nodepath i stedet for &gpio0
-        data-gpios = <&{/soc/peripheral@40000000/gpio@50000000} 6 0>;
+        data-gpios = <0 6 GPIO_ACTIVE_HIGH>;
         status = "okay";
     };
 
     chosen {
-        zmk,underglow = &ws2812_leds;
-    };
-};
-
-/* LED indikatorer */
-&ws2812_leds {
-    zmk,led-indicators {
-        compatible = "zmk,led-indicators";
-
-        caps_lock {
-            led-index = <0>;
-            color = <255 0 0>;
-        };
-
-        layer_lower {
-            layer = <1>;
-            led-index = <1>;
-            color = <0 0 255>;
-        };
-
-        layer_raise {
-            layer = <2>;
-            led-index = <2>;
-            color = <0 255 0>;
-        };
+        zmk,underglow = &ws2812;
     };
 };
