@@ -7,10 +7,11 @@
     ws2812_leds: ws2812 {
         compatible = "worldsemi,ws2812";
         label = "WS2812";
-        chain-length = <54>;
+        chain-length = <54>;                // Samlet antal LED’er
         color-mapping = <GRB>;
 
-        io-channels = <&nrfx_pwm0 6>;   // ✅ Brug PWM driver i stedet for GPIO
+        /* PWM0, kanal 0 = P0.06 på Nice!Nano v2 */
+        io-channels = <&nrfx_pwm0 0>;       // ✅ Korrekt for nRF52840 + ZMK/Zephyr 3.5
         status = "okay";
     };
 
@@ -19,26 +20,29 @@
     };
 };
 
-/* LED indikators */
+/* -------------------------------------------------------------------------- */
+/*  LED-indikatorer (valgfrit)                                                */
+/* -------------------------------------------------------------------------- */
+
 &ws2812_leds {
     zmk,led-indicators {
         compatible = "zmk,led-indicators";
 
         caps_lock {
             led-index = <0>;
-            color = <255 0 0>;
+            color = <255 0 0>;   // Rød
         };
 
         layer_lower {
             layer = <1>;
             led-index = <1>;
-            color = <0 0 255>;
+            color = <0 0 255>;   // Blå
         };
 
         layer_raise {
             layer = <2>;
             led-index = <2>;
-            color = <0 255 0>;
+            color = <0 255 0>;   // Grøn
         };
     };
 };
