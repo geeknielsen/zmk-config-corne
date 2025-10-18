@@ -7,9 +7,10 @@
     ws2812_leds: ws2812 {
         compatible = "worldsemi,ws2812";
         label = "WS2812";
-        chain-length = <54>;                 // antal LED’er (tilpas hvis du har flere/færre)
+        chain-length = <54>;
         color-mapping = <GRB>;
-        data-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;  // ✅ korrekt Zephyr 3.5 syntax
+
+        io-channels = <&nrfx_pwm0 6>;   // ✅ Brug PWM driver i stedet for GPIO
         status = "okay";
     };
 
@@ -18,29 +19,26 @@
     };
 };
 
-/* -------------------------------------------------------------------------- */
-/*  LED-indikatorer (valgfrit)                                                */
-/* -------------------------------------------------------------------------- */
-
+/* LED indikators */
 &ws2812_leds {
     zmk,led-indicators {
         compatible = "zmk,led-indicators";
 
         caps_lock {
             led-index = <0>;
-            color = <255 0 0>;   // Rød
+            color = <255 0 0>;
         };
 
         layer_lower {
             layer = <1>;
             led-index = <1>;
-            color = <0 0 255>;   // Blå
+            color = <0 0 255>;
         };
 
         layer_raise {
             layer = <2>;
             led-index = <2>;
-            color = <0 255 0>;   // Grøn
+            color = <0 255 0>;
         };
     };
 };
