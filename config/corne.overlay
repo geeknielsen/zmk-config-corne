@@ -1,15 +1,15 @@
 /*
  * corne.overlay
- * Hardware configuration for Corne RGB + Nice!Nano v2
+ * RGB LED configuration for Corne + Nice!Nano v2
  */
 
-/ {
+ / {
     leds: ws2812 {
         compatible = "worldsemi,ws2812";
         label = "WS2812";
-        chain-length = <54>;                   // 🔧 Skift til samlet antal LED’er (per-key + underglow)
-        color-mapping = <GRB>;                 // De fleste Corne boards bruger GRB
-        data-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>; // D6 på Nice!Nano (GPIO0.06)
+        chain-length = <54>;             // 🔧 Skift til dit samlede antal LED'er (per-key + underglow)
+        color-mapping = <GRB>;
+        data-gpios = <&gpio0 6 0>;       // 0 = GPIO_ACTIVE_HIGH
         status = "okay";
     };
 
@@ -18,28 +18,25 @@
     };
 };
 
-/* -----------------------------------------------------------------------------
- * LED-indikatorer
- * ----------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/* LED indikatorer                                                            */
+/* -------------------------------------------------------------------------- */
 
 &leds {
     zmk,led-indicators {
         compatible = "zmk,led-indicators";
 
-        /* Caps Lock indikator – LED 0 */
         caps_lock {
             led-index = <0>;
             color = <255 0 0>;   // Rød
         };
 
-        /* Layer 1 indikator – LED 1 */
         layer_lower {
             layer = <1>;
             led-index = <1>;
             color = <0 0 255>;   // Blå
         };
 
-        /* Layer 2 indikator – LED 2 */
         layer_raise {
             layer = <2>;
             led-index = <2>;
