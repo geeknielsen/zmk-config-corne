@@ -1,17 +1,13 @@
-/*
- * corne.overlay
- * Nice!Nano v2 + WS2812 RGB (per-key + underglow)
- */
+#include <zephyr/dt-bindings/gpio/gpio.h>
 
- / {
+/ {
     ws2812_leds: ws2812 {
         compatible = "worldsemi,ws2812";
         label = "WS2812";
-        chain-length = <54>;                // Samlet antal LED’er
+        chain-length = <54>;
         color-mapping = <GRB>;
 
-        /* PWM0, kanal 0 = P0.06 på Nice!Nano v2 */
-        io-channels = <&nrfx_pwm0 0>;       // ✅ Korrekt for nRF52840 + ZMK/Zephyr 3.5
+        data-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;   // ✅ GPIO0 er nu kendt pga include
         status = "okay";
     };
 
@@ -20,29 +16,26 @@
     };
 };
 
-/* -------------------------------------------------------------------------- */
-/*  LED-indikatorer (valgfrit)                                                */
-/* -------------------------------------------------------------------------- */
-
+/* LED indikatorer */
 &ws2812_leds {
     zmk,led-indicators {
         compatible = "zmk,led-indicators";
 
         caps_lock {
             led-index = <0>;
-            color = <255 0 0>;   // Rød
+            color = <255 0 0>;
         };
 
         layer_lower {
             layer = <1>;
             led-index = <1>;
-            color = <0 0 255>;   // Blå
+            color = <0 0 255>;
         };
 
         layer_raise {
             layer = <2>;
             led-index = <2>;
-            color = <0 255 0>;   // Grøn
+            color = <0 255 0>;
         };
     };
 };
