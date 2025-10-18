@@ -7,9 +7,9 @@
     ws2812_leds: ws2812 {
         compatible = "worldsemi,ws2812";
         label = "WS2812";
-        chain-length = <54>;          // 🔧 samlet antal LED’er
+        chain-length = <54>;          // samlet antal LED’er
         color-mapping = <GRB>;        // de fleste Corne boards bruger GRB
-        data-gpios = <&gpio0 6>;      // ← kun controller + pin, INGEN tredje værdi
+        gpios = <&gpio0 6>;           // Pin D6 på Nice!Nano v2
         status = "okay";
     };
 
