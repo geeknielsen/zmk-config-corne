@@ -7,9 +7,9 @@
     ws2812_leds: ws2812 {
         compatible = "worldsemi,ws2812";
         label = "WS2812";
-        chain-length = <54>;              // samlet antal LED’er
-        color-mapping = <GRB>;            // typisk for Corne
-        gpios = <0 6 GPIO_ACTIVE_HIGH>;   // ✅ Brug portnummer, pin og flag
+        chain-length = <54>;                 // antal LED’er (tilpas hvis du har flere/færre)
+        color-mapping = <GRB>;
+        data-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;  // ✅ korrekt Zephyr 3.5 syntax
         status = "okay";
     };
 
@@ -19,7 +19,7 @@
 };
 
 /* -------------------------------------------------------------------------- */
-/*  LED-indikatorer  (valgfrit)                                               */
+/*  LED-indikatorer (valgfrit)                                                */
 /* -------------------------------------------------------------------------- */
 
 &ws2812_leds {
@@ -28,19 +28,19 @@
 
         caps_lock {
             led-index = <0>;
-            color = <255 0 0>;
+            color = <255 0 0>;   // Rød
         };
 
         layer_lower {
             layer = <1>;
             led-index = <1>;
-            color = <0 0 255>;
+            color = <0 0 255>;   // Blå
         };
 
         layer_raise {
             layer = <2>;
             led-index = <2>;
-            color = <0 255 0>;
+            color = <0 255 0>;   // Grøn
         };
     };
 };
