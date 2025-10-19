@@ -1,14 +1,14 @@
 / {
-	ws2812: ws2812 {
-		compatible = "worldsemi,ws2812";
-		label = "WS2812";
-		chain-length = <54>;
-		color-mapping = <GRB>;
-		data-gpios = <0 6 0>;
-		status = "okay";
-	};
+    ws2812: ws2812 {
+        compatible = "worldsemi,ws2812";
+        label = "WS2812";
+        chain-length = <54>;
+        color-mapping = <GRB>;
+        data-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
+        status = "okay";
+    };
 
-	chosen {
-		zmk,underglow = &ws2812;
-	};
+    chosen {
+        zmk,underglow = &ws2812;
+    };
 };
