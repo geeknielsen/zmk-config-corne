@@ -4,7 +4,7 @@
         label = "WS2812";
         chain-length = <54>;
         color-mapping = <GRB>;
-        data-gpios = <&nrf_gpio0 6 GPIO_ACTIVE_HIGH>;
+        data-gpios = <&gpio0 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         status = "okay";
     };
 
