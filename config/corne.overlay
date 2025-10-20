@@ -2,27 +2,16 @@
 
 / {
     compatible = "zmk,keyboard";
-};
 
-/* WS2812 LED-strip over SPI3 */
-&spi3 {
-    compatible = "nordic,nrf-spim";
-    status = "okay";
-
-    ws2812: ws2812@0 {
-        compatible = "worldsemi,ws2812-spi";
-        reg = <0>;
-        spi-max-frequency = <4000000>;
-        chain-length = <27>;        /* 21 key LEDs + 6 underglow on this half */
-        spi-one-frame = <0x70>;
-        spi-zero-frame = <0x40>;
+    ws2812: ws2812 {
+        compatible = "worldsemi,ws2812";
+        label = "WS2812";
+        chain-length = <27>; /* 21 key LEDs + 6 underglow */
         color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+        data-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>; /* pin D6 på nice!nano */
         status = "okay";
     };
-};
 
-/* Fortæl ZMK at bruge denne strip til underglow */
- / {
     chosen {
         zmk,underglow = &ws2812;
     };
