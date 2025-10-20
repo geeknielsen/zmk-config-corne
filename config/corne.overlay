@@ -1,9 +1,5 @@
 #include <dt-bindings/led/led.h>
 
-/ {
-    compatible = "zmk,keyboard";
-};
-
 &spi3 {
     compatible = "nordic,nrf-spim";
     status = "okay";
@@ -22,7 +18,7 @@
 
  / {
     chosen {
-        zmk,underglow = &ws2812;
-        zmk,per-key = &ws2812;
+        zmk,underglow = &led_strip;
+        zmk,per-key = &led_strip;
     };
 };
