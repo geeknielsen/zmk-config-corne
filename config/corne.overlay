@@ -1,14 +1,19 @@
 #include <dt-bindings/led/led.h>
 
+/ {
+    compatible = "zmk,keyboard";
+};
+
+/* WS2812 LED-strip over SPI3 */
 &spi3 {
     compatible = "nordic,nrf-spim";
     status = "okay";
 
-    led_strip: ws2812@0 {
+    ws2812: ws2812@0 {
         compatible = "worldsemi,ws2812-spi";
         reg = <0>;
         spi-max-frequency = <4000000>;
-        chain-length = <60>;
+        chain-length = <27>;        /* 21 key LEDs + 6 underglow on this half */
         spi-one-frame = <0x70>;
         spi-zero-frame = <0x40>;
         color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
@@ -16,9 +21,9 @@
     };
 };
 
+/* Fortæl ZMK at bruge denne strip til underglow */
  / {
     chosen {
-        zmk,underglow = &led_strip;
-        zmk,per-key = &led_strip;
+        zmk,underglow = &ws2812;
     };
 };
