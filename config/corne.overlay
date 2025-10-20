@@ -6,9 +6,9 @@
     ws2812: ws2812 {
         compatible = "worldsemi,ws2812";
         label = "WS2812";
-        chain-length = <27>; /* 21 key LEDs + 6 underglow */
+        chain-length = <27>;
         color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
-        data-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>; /* pin D6 på nice!nano */
+        data-gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;
         status = "okay";
     };
 
