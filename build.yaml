@@ -25,11 +25,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Checkout ZMK Firmware (urob fork)
-        uses: actions/checkout@v4
-        with:
-          repository: urob/zmk
-          ref: main
-          path: zmk
+        run: |
+          git clone --depth 1 --branch main https://github.com/urob/zmk.git zmk
+          rm -rf zmk/.github
 
       - name: Build Firmware
         run: |
