@@ -38,8 +38,8 @@ jobs:
 
       - name: Initialize and update west
         run: |
-          cd external
-          west init -l zmk/app
+          west init -l external/zmk/app
+          cd external/zmk
           west update
 
       - name: Build firmware
