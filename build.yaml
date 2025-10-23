@@ -21,26 +21,30 @@ jobs:
             shield: settings_reset
 
     steps:
+      # 1️⃣ Hent din ZMK config (dit eget repo)
       - name: Checkout ZMK Config
         uses: actions/checkout@v4
 
-      - name: Download urob/zmk as ZIP (no workflows)
+      # 2️⃣ Download urob/zmk som ZIP (uden GitHub workflows)
+      - name: Download urob/zmk (latest main)
         run: |
           mkdir -p external
           curl -L https://github.com/urob/zmk/archive/refs/heads/main.zip -o zmk.zip
           unzip -q zmk.zip -d external
           mv external/zmk-main external/zmk
           rm -rf external/zmk/.github
-          ls -la external/zmk/app
 
-      - name: Install west
+      # 3️⃣ Installer West (Zephyr værktøj)
+      - name: Install West
         run: pip install west
 
-      - name: Initialize and update west
+      # 4️⃣ Init og opdater West workspace
+      - name: Initialize Zephyr (West)
         run: |
           west init -l external/zmk/app
           west update
 
+      # 5️⃣ Build firmware for hver matrix (left/right/reset)
       - name: Build firmware
         run: |
           west build -s external/zmk/app -d build/${{ matrix.shield }} \
@@ -49,6 +53,7 @@ jobs:
                -DSHIELD="${{ matrix.shield }}" \
                -DZMK_EXTRA_MODULES=${{ github.workspace }}
 
+      # 6️⃣ Upload .uf2 som artifact (til download)
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
         with:
