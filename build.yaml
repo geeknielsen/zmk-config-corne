@@ -24,13 +24,14 @@ jobs:
       - name: Checkout ZMK Config
         uses: actions/checkout@v4
 
-      - name: Download urob/zmk firmware (without workflows)
+      - name: Download urob/zmk as ZIP (no workflows)
         run: |
-          mkdir external
-          cd external
-          git clone --depth 1 --branch main https://github.com/urob/zmk.git
-          rm -rf zmk/.github
-          cd ..
+          mkdir -p external
+          curl -L https://github.com/urob/zmk/archive/refs/heads/main.zip -o zmk.zip
+          unzip -q zmk.zip -d external
+          mv external/zmk-main external/zmk
+          rm -rf external/zmk/.github
+          ls -la external/zmk/app
 
       - name: Install west
         run: pip install west
