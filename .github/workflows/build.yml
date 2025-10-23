@@ -22,7 +22,7 @@ jobs:
 
     steps:
       # ----------------------------
-      # Checkout ZMK Config
+      # Checkout ZMK Config (this repo)
       # ----------------------------
       - name: Checkout ZMK Config
         uses: actions/checkout@v4
@@ -61,7 +61,7 @@ jobs:
       - name: Build firmware
         run: |
           cd external/zmk
-          west build -s app -d ../../build/${{ matrix.shield }} \
+          west build -d ../../build/${{ matrix.shield }} \
             -b ${{ matrix.board }} \
             -- -DZMK_CONFIG=${{ github.workspace }}/config \
                -DSHIELD="${{ matrix.shield }}" \
