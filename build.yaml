@@ -24,16 +24,26 @@ jobs:
       - name: Checkout ZMK Config
         uses: actions/checkout@v4
 
-      - name: Checkout ZMK Firmware (urob fork)
+      - name: Clone Urob's ZMK fork (without workflows)
         run: |
+          rm -rf zmk
           git clone --depth 1 --branch main https://github.com/urob/zmk.git zmk
           rm -rf zmk/.github
+          ls -la zmk
+
+      - name: Set up Zephyr and west
+        run: |
+          pip install west
+          west init -l zmk/app
+          west update
 
       - name: Build Firmware
         run: |
           west build -s zmk/app -d build/${{ matrix.shield }} \
             -b ${{ matrix.board }} \
-            -- -DZMK_CONFIG=${{ github.workspace }}/config -DSHIELD="${{ matrix.shield }}" -DZMK_EXTRA_MODULES=${{ github.workspace }}
+            -- -DZMK_CONFIG=${{ github.workspace }}/config \
+               -DSHIELD="${{ matrix.shield }}" \
+               -DZMK_EXTRA_MODULES=${{ github.workspace }}
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
