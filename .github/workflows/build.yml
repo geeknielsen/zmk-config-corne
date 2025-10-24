@@ -48,20 +48,18 @@ jobs:
           pip install west
           west --version
 
-      # ✅ FIX: initialize west from correct folder (zmk, not zmk/app)
       - name: Initialize and update west
         working-directory: external
         run: |
-          west init -l zmk
-          cd zmk
+          west init -l zmk/app
           west update
           echo "✅ West workspace ready"
 
       - name: Build firmware
-        working-directory: external/zmk
+        working-directory: external
         run: |
-          mkdir -p "../../build/${{ matrix.shield }}"
-          west build -s app -d "../../build/${{ matrix.shield }}" \
+          mkdir -p "../build/${{ matrix.shield }}"
+          west build -s zmk/app -d "../build/${{ matrix.shield }}" \
             -b ${{ matrix.board }} \
             -- -DZMK_CONFIG=${{ github.workspace }}/config \
                -DSHIELD="${{ matrix.shield }}" \
