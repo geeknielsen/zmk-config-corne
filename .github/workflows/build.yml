@@ -24,16 +24,16 @@ jobs:
       - name: Checkout ZMK Config
         uses: actions/checkout@v4
 
-      # ⚙️ Byg med urob-forken i stedet for standard ZMK
+      # ⚙️ Build firmware using urob fork of ZMK
       - name: Build firmware (urob fork)
-        uses: zmkfirmware/zmk-build-action@v1
+        uses: zmkfirmware/zmk-build@v1
         with:
           zmk-ref: "urob/zmk@main"
           board: ${{ matrix.board }}
           shield: ${{ matrix.shield }}
           config-path: "config"
 
-      # 📦 Upload .uf2 filer som artifacts
+      # 📦 Upload .uf2 files
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
         with:
