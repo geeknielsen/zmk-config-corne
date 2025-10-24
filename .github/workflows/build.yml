@@ -24,6 +24,16 @@ jobs:
       - name: Checkout ZMK Config
         uses: actions/checkout@v4
 
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/pip
+            external/zmk/zephyr/.cache
+          key: ${{ runner.os }}-zmk-cache-${{ hashFiles('config/**', '.github/workflows/**') }}
+          restore-keys: |
+            ${{ runner.os }}-zmk-cache-
+
       - name: Download urob/zmk as ZIP (no workflows)
         run: |
           mkdir -p external
@@ -38,11 +48,12 @@ jobs:
           pip install west
           west --version
 
-      # 🧩 Korrekt west init: workspace = external/, app = zmk/app
+      # ✅ FIX: west update køres nu i den korrekte mappe
       - name: Initialize and update west
         working-directory: external
         run: |
           west init -l zmk/app
+          cd zmk
           west update
           echo "✅ West workspace ready"
 
