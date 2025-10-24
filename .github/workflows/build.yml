@@ -14,9 +14,9 @@ jobs:
       matrix:
         include:
           - board: nice_nano_v2
-            shield: "corne_left nice_view"
+            shield: "corne_left nice_view_adapter nice_view"
           - board: nice_nano_v2
-            shield: "corne_right nice_view"
+            shield: "corne_right nice_view_adapter nice_view"
           - board: nice_nano_v2
             shield: "settings_reset"
 
@@ -38,18 +38,19 @@ jobs:
           pip install west
           west --version
 
+      # 🧩 Korrekt west init: workspace = external/, app = zmk/app
       - name: Initialize and update west
-        working-directory: external/zmk
+        working-directory: external
         run: |
-          west init -l app
+          west init -l zmk/app
           west update
-          echo "✅ West initialized and updated"
+          echo "✅ West workspace ready"
 
       - name: Build firmware
-        working-directory: external/zmk
+        working-directory: external
         run: |
-          mkdir -p "../../build/${{ matrix.shield }}"
-          west build -s app -d "../../build/${{ matrix.shield }}" \
+          mkdir -p "../build/${{ matrix.shield }}"
+          west build -s zmk/app -d "../build/${{ matrix.shield }}" \
             -b ${{ matrix.board }} \
             -- -DZMK_CONFIG=${{ github.workspace }}/config \
                -DSHIELD="${{ matrix.shield }}" \
