@@ -1,4 +1,4 @@
-name: Build ZMK Firmware
+name: Build ZMK Firmware (urob fork)
 
 on:
   push:
@@ -21,9 +21,11 @@ jobs:
             shield: "settings_reset"
 
     steps:
+      # --- Hent din egen ZMK Config ---
       - name: Checkout ZMK Config
         uses: actions/checkout@v4
 
+      # --- Cache for hurtigere builds ---
       - name: Cache dependencies
         uses: actions/cache@v4
         with:
@@ -34,52 +36,56 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-zmk-cache-
 
-      - name: Download urob/zmk as ZIP (no workflows)
+      # --- Hent urob/zmk (uden workflows) ---
+      - name: Download urob/zmk
         run: |
           mkdir -p external
           curl -L https://github.com/urob/zmk/archive/refs/heads/main.zip -o zmk.zip
           unzip -q zmk.zip -d external
           mv external/zmk-main external/zmk
           rm -rf external/zmk/.github
-          echo "✅ Downloaded urob/zmk successfully"
+          echo "✅ urob/zmk downloaded."
 
-      - name: Install dependencies
+      # --- Installer værktøjer og SDK ---
+      - name: Install Zephyr SDK & West
         run: |
           sudo apt-get update
           sudo apt-get install -y ninja-build gperf ccache dfu-util device-tree-compiler wget xz-utils file make gcc python3-pip python3-dev python3-setuptools
           pip install west
-          west --version
-
-      - name: Setup Zephyr SDK
-        run: |
           wget -q https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.9/zephyr-sdk-0.16.9_linux-x86_64.tar.xz
           tar xf zephyr-sdk-0.16.9_linux-x86_64.tar.xz
           sudo mv zephyr-sdk-0.16.9 /opt/zephyr-sdk-0.16.9
           /opt/zephyr-sdk-0.16.9/setup.sh -t arm-zephyr-eabi
-          echo "✅ Zephyr SDK installed"
+          echo "✅ Zephyr SDK installed."
 
-      - name: Initialize and update west (full workspace)
+      # --- Initialiser west korrekt ---
+      - name: Initialize and update west (correct workspace root)
         working-directory: external
         run: |
+          echo "📂 Current dir: $(pwd)"
+          echo "🧱 Initializing west workspace..."
           west init -l zmk/app
+          echo "📦 Updating Zephyr + modules..."
           west update
-          tree -L 2 zmk zephyr || true
-          echo "✅ West workspace initialized and Zephyr downloaded"
+          echo "✅ Zephyr and ZMK modules ready."
+          tree -L 2 .
 
+      # --- Byg firmware ---
       - name: Build firmware
-        working-directory: external/zmk
+        working-directory: external
         env:
           ZEPHYR_TOOLCHAIN_VARIANT: zephyr
           ZEPHYR_SDK_INSTALL_DIR: /opt/zephyr-sdk-0.16.9
         run: |
-          mkdir -p "../../build/${{ matrix.shield }}"
-          west build -s app -d "../../build/${{ matrix.shield }}" \
+          mkdir -p "../build/${{ matrix.shield }}"
+          west build -s zmk/app -d "../build/${{ matrix.shield }}" \
             -b ${{ matrix.board }} \
             -- -DZMK_CONFIG=${{ github.workspace }}/config \
                -DSHIELD="${{ matrix.shield }}" \
                -DZMK_EXTRA_MODULES=${{ github.workspace }}
           echo "✅ Firmware built successfully for ${{ matrix.shield }}"
 
+      # --- Upload .uf2 filer ---
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
         with:
