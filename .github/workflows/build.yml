@@ -48,10 +48,11 @@ jobs:
           pip install west
           west --version
 
+      # ✅ FIX: initialize west from correct folder (zmk, not zmk/app)
       - name: Initialize and update west
         working-directory: external
         run: |
-          west init -l zmk/app
+          west init -l zmk
           cd zmk
           west update
           echo "✅ West workspace ready"
