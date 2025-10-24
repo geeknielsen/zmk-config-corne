@@ -14,11 +14,11 @@ jobs:
       matrix:
         include:
           - board: nice_nano_v2
-            shield: corne_left nice_view
+            shield: "corne_left nice_view"
           - board: nice_nano_v2
-            shield: corne_right nice_view
+            shield: "corne_right nice_view"
           - board: nice_nano_v2
-            shield: settings_reset
+            shield: "settings_reset"
 
     steps:
       - name: Checkout ZMK Config
@@ -48,7 +48,8 @@ jobs:
       - name: Build firmware
         working-directory: external/zmk
         run: |
-          west build -s app -d ../../build/${{ matrix.shield }} \
+          mkdir -p "../../build/${{ matrix.shield }}"
+          west build -s app -d "../../build/${{ matrix.shield }}" \
             -b ${{ matrix.board }} \
             -- -DZMK_CONFIG=${{ github.workspace }}/config \
                -DSHIELD="${{ matrix.shield }}" \
