@@ -14,62 +14,46 @@ jobs:
       matrix:
         include:
           - board: nice_nano_v2
-            shield: corne_left nice_view_adapter nice_view
+            shield: corne_left nice_view
           - board: nice_nano_v2
-            shield: corne_right nice_view_adapter nice_view
+            shield: corne_right nice_view
           - board: nice_nano_v2
             shield: settings_reset
 
     steps:
-      # ----------------------------
-      # Checkout ZMK Config (this repo)
-      # ----------------------------
       - name: Checkout ZMK Config
         uses: actions/checkout@v4
 
-      # ----------------------------
-      # Download urob/zmk as ZIP (no workflows)
-      # ----------------------------
-      - name: Download urob/zmk
+      - name: Download urob/zmk as ZIP (no workflows)
         run: |
           mkdir -p external
           curl -L https://github.com/urob/zmk/archive/refs/heads/main.zip -o zmk.zip
           unzip -q zmk.zip -d external
           mv external/zmk-main external/zmk
           rm -rf external/zmk/.github
-          echo "urob/zmk downloaded successfully"
+          echo "✅ Downloaded urob/zmk successfully"
 
-      # ----------------------------
-      # Install west (Zephyr tool)
-      # ----------------------------
       - name: Install west
-        run: pip install west
+        run: |
+          pip install west
+          west --version
 
-      # ----------------------------
-      # Initialize and update west
-      # ----------------------------
       - name: Initialize and update west
         run: |
-          west init -l external/zmk/app
           cd external/zmk
+          west init -l app
           west update
-          cd ../..
+          echo "✅ West initialized and updated"
 
-      # ----------------------------
-      # Build firmware
-      # ----------------------------
       - name: Build firmware
         run: |
-          cd external/zmk
-          west build -d ../../build/${{ matrix.shield }} \
+          west build -s external/zmk/app -d build/${{ matrix.shield }} \
             -b ${{ matrix.board }} \
             -- -DZMK_CONFIG=${{ github.workspace }}/config \
                -DSHIELD="${{ matrix.shield }}" \
                -DZMK_EXTRA_MODULES=${{ github.workspace }}
+          echo "✅ Firmware built successfully for ${{ matrix.shield }}"
 
-      # ----------------------------
-      # Upload firmware artifacts (.uf2 files)
-      # ----------------------------
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
         with:
