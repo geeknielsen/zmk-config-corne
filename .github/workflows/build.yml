@@ -56,9 +56,9 @@ jobs:
           tar xf zephyr-sdk-0.16.9_linux-x86_64.tar.xz
           sudo mv zephyr-sdk-0.16.9 /opt/zephyr-sdk-0.16.9
           /opt/zephyr-sdk-0.16.9/setup.sh -t arm-zephyr-eabi
-          echo "✅ Zephyr SDK installed."
+          echo "✅ Zephyr SDK installed at /opt/zephyr-sdk-0.16.9"
 
-      # --- Initialiser west korrekt (fixer tidligere fejl) ---
+      # --- Initialiser west korrekt ---
       - name: Initialize and update west (correct workspace root)
         working-directory: external
         run: |
@@ -71,13 +71,14 @@ jobs:
           echo "✅ Zephyr and ZMK modules ready."
           tree -L 2 .
 
-      # --- Byg firmware ---
+      # --- Byg firmware (med korrekt SDK-miljø) ---
       - name: Build firmware
         working-directory: external/zmk
-        env:
-          ZEPHYR_TOOLCHAIN_VARIANT: zephyr
-          ZEPHYR_SDK_INSTALL_DIR: /opt/zephyr-sdk-0.16.9
         run: |
+          export ZEPHYR_TOOLCHAIN_VARIANT=zephyr
+          export ZEPHYR_SDK_INSTALL_DIR=/opt/zephyr-sdk-0.16.9
+          echo "🔧 Toolchain set: $ZEPHYR_SDK_INSTALL_DIR"
+
           mkdir -p "../../../build/${{ matrix.shield }}"
           west build -s app -d "../../../build/${{ matrix.shield }}" \
             -b ${{ matrix.board }} \
