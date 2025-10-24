@@ -1,4 +1,4 @@
-name: Build ZMK Firmware (urob fork - stable)
+name: Build ZMK Firmware (urob fork)
 
 on:
   push:
@@ -21,19 +21,19 @@ jobs:
             shield: "settings_reset"
 
     steps:
-      - name: Checkout ZMK Config
+      - name: Checkout config
         uses: actions/checkout@v4
 
-      # ⚙️ Build firmware using urob fork of ZMK
+      # ✅ Build using urob's maintained action
       - name: Build firmware (urob fork)
-        uses: zmkfirmware/zmk-build@v1
+        uses: urob/zmk-build@main
         with:
           zmk-ref: "urob/zmk@main"
           board: ${{ matrix.board }}
           shield: ${{ matrix.shield }}
           config-path: "config"
 
-      # 📦 Upload .uf2 files
+      # 📦 Upload resulting firmware
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
         with:
