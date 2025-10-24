@@ -58,12 +58,13 @@ jobs:
           /opt/zephyr-sdk-0.16.9/setup.sh -t arm-zephyr-eabi
           echo "✅ Zephyr SDK installed"
 
-      - name: Initialize and update west
-        working-directory: external/zmk
+      - name: Initialize and update west (full workspace)
+        working-directory: external
         run: |
-          west init -l app
+          west init -l zmk/app
           west update
-          echo "✅ West workspace initialized and updated"
+          tree -L 2 zmk zephyr || true
+          echo "✅ West workspace initialized and Zephyr downloaded"
 
       - name: Build firmware
         working-directory: external/zmk
