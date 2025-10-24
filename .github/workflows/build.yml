@@ -48,7 +48,6 @@ jobs:
           pip install west
           west --version
 
-      # ✅ FIX: west update køres nu i den korrekte mappe
       - name: Initialize and update west
         working-directory: external
         run: |
@@ -58,10 +57,10 @@ jobs:
           echo "✅ West workspace ready"
 
       - name: Build firmware
-        working-directory: external
+        working-directory: external/zmk
         run: |
-          mkdir -p "../build/${{ matrix.shield }}"
-          west build -s zmk/app -d "../build/${{ matrix.shield }}" \
+          mkdir -p "../../build/${{ matrix.shield }}"
+          west build -s app -d "../../build/${{ matrix.shield }}" \
             -b ${{ matrix.board }} \
             -- -DZMK_CONFIG=${{ github.workspace }}/config \
                -DSHIELD="${{ matrix.shield }}" \
