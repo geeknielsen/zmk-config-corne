@@ -5,16 +5,12 @@ on:
     branches: [ "master" ]
     paths:
       - "config/**"
-      - "west.yml"
       - ".github/workflows/**"
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: zmkfirmware/zmk-dev-arm:stable
-
     strategy:
       fail-fast: false
       matrix:
@@ -30,32 +26,18 @@ jobs:
             shield: "settings_reset"
 
     steps:
-      - name: Checkout
+      - name: Checkout config repo
         uses: actions/checkout@v4
 
-      - name: Debug tree
-        run: |
-          pwd
-          ls -la
-          echo "---- west.yml ----"
-          ls -la west.yml || true
-          echo "---- config/ ----"
-          ls -la config || true
-
-      - name: West init (repo root manifest)
-        run: west init -l .
-
-      - name: West update
-        run: west update
-
-      - name: Build ${{ matrix.name }}
-        run: |
-          west build -s zmk/app -d build/${{ matrix.name }} -b ${{ matrix.board }} -- \
-            -DSHIELD="${{ matrix.shield }}" \
-            -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+      - name: Build ZMK
+        uses: zmkfirmware/zmk-build-action@v1
+        with:
+          config: config
+          board: ${{ matrix.board }}
+          shield: ${{ matrix.shield }}
 
       - name: Upload UF2
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.name }}
-          path: build/${{ matrix.name }}/zephyr/*.uf2
+          path: "**/*.uf2"
