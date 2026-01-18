@@ -5,24 +5,20 @@
  */
 
 #include "keys_da.h"
-#include <input/processors.dtsi> // ??
+
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/backlight.h>
+#include <input/processors.dtsi>
+
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
 
-#define ZMK_MOUSE_DEFAULT_MOVE_VAL 1500  // 600
-#define ZMK_MOUSE_DEFAULT_SCRL_VAL 20    // 10
+#define ZMK_MOUSE_DEFAULT_MOVE_VAL 1500
+#define ZMK_MOUSE_DEFAULT_SCRL_VAL 20
 #define CONSTLAYERMOUSEFAST 4
 
-/ {
-    chosen { zmk,underglow = &led_strip; };
-};
-
-// &led_strip { chain-length = <27>; };
-
+/* Mouse speed tweak on a specific layer */
 &mmv_input_listener {
     set_mouse_fast {
         layers = <CONSTLAYERMOUSEFAST>;
@@ -30,7 +26,7 @@
     };
 };
 
-/ {
+ / {
     behaviors {
         hold_behavior: hold_behavior {
             compatible = "zmk,behavior-hold-tap";
@@ -53,7 +49,6 @@
             compatible = "zmk,behavior-mod-morph";
             label = "BEHAVIOR_DEL_BACKSPACE";
             bindings = <&kp BACKSPACE>, <&kp DELETE>;
-
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
         };
@@ -62,7 +57,6 @@
             compatible = "zmk,behavior-mod-morph";
             label = "BEHAVIOR_DOT_COLONS";
             bindings = <&kp DA_COLON>, <&kp DA_SEMICOLON>;
-
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
         };
@@ -71,7 +65,6 @@
             compatible = "zmk,behavior-mod-morph";
             label = "NEW_QUOTES";
             bindings = <&kp DA_DOUBLE_QUOTES>, <&kp DA_SINGLE_QUOTE>;
-
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
         };
@@ -80,7 +73,6 @@
             compatible = "zmk,behavior-mod-morph";
             label = "BEHAVIOR_QUESTON_EXC";
             bindings = <&kp DA_QUESTION>, <&kp DA_EXCLAMATION>;
-
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
         };
@@ -89,7 +81,6 @@
             compatible = "zmk,behavior-mod-morph";
             label = "BEHAVIOR_AT_DOLLER";
             bindings = <&kp DA_AT_SIGN>, <&kp DA_DOLLAR>;
-
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
         };
@@ -115,19 +106,12 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
-            // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-            // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-            //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
-
             bindings = <
 &kp TAB               &kp DA_Q  &kp DA_W                &kp DA_E               &hold_behavior 7 DA_R  &kp DA_T                 &kp DA_Y  &kp DA_U      &kp DA_I                 &kp DA_O     &kp DA_P               &kp DA_A_RING
 &behavior_shift_caps  &kp DA_A  &hold_behavior 10 DA_S  &hold_behavior 2 DA_D  &hold_behavior 1 DA_F  &hold_behavior 3 DA_G    &kp DA_H  &kp DA_J      &kp DA_K                 &kp DA_L     &kp DA_AE              &kp DA_O_SLASH
 &kp LCTRL             &kp DA_Z  &kp DA_X                &hold_behavior 8 DA_C  &hold_behavior 9 DA_V  &kp DA_B                 &kp DA_N  &kp DA_M      &behavior_dot_colons     &new_quotes  &behavior_queston_exc  &behavior_at_doller
                                                         &kp LEFT_ALT           &kp LEFT_WIN           &key_repeat              &kp RET   &kp DA_SPACE  &behavior_del_backspace
             >;
-
             label = "Default";
         };
 
@@ -138,7 +122,6 @@
 &trans  &none  &none  &none   &none   &none     &none   &none           &none           &none            &none  &none
                       &trans  &trans  &trans    &trans  &trans          &trans
             >;
-
             label = "Pile";
         };
 
@@ -149,7 +132,6 @@
 &trans  &none  &none  &none   &none   &none     &none      &none           &none           &none            &none  &none
                       &trans  &trans  &trans    &mkp LCLK  &mkp MB2        &mkp MCLK
             >;
-
             label = "Mouse";
         };
 
@@ -160,7 +142,6 @@
 &trans  &none  &none  &none   &none   &none     &kp DA_N0     &kp DA_N1    &kp DA_N2     &kp DA_N3  &none  &kp DA_BACKSLASH
                       &trans  &trans  &trans    &kp DA_EQUAL  &kp DA_PLUS  &kp DA_MINUS
             >;
-
             label = "Calc";
         };
 
@@ -171,7 +152,6 @@
 &trans  &none  &none  &none   &none   &none     &none      &none           &none           &none            &none  &none
                       &trans  &trans  &trans    &mkp LCLK  &mkp MB2        &mkp MCLK
             >;
-
             label = "Mouse_Fast";
         };
 
@@ -182,7 +162,6 @@
 &trans  &none  &none  &none   &none   &none     &none   &none           &none           &none            &none  &none
                       &trans  &trans  &trans    &trans  &trans          &trans
             >;
-
             label = "Scroll";
         };
 
@@ -193,7 +172,6 @@
 &trans  &none  &none  &none   &none   &none     &none   &none     &none          &none    &none  &none
                       &trans  &trans  &trans    &trans  &trans    &trans
             >;
-
             label = "HomeEnd";
         };
 
@@ -204,18 +182,17 @@
 &trans  &kp DA_POUND_SIGN  &kp DA_SECTION  &kp DA_MU                &none   &none     &kp DA_LEFT_BRACKET      &kp DA_RIGHT_BRACKET      &kp DA_AMPERSAND  &kp DA_UNDERSCORE    &kp DA_CARET  &kp DA_EURO
                                            &trans                   &trans  &trans    &trans                   &trans                    &trans
             >;
-
             label = "Signs";
         };
 
+        /* Lighting + BT + soft off layer */
         layer_Corne {
             bindings = <
-&soft_off   &none  &none  &none  &none  &none    &bl BL_TOG  &none       &rgb_ug RGB_TOG  &none            &none            &SoftLockOff
-&none       &none  &none  &none  &none  &none    &bl BL_INC  &bt BT_NXT  &rgb_ug RGB_EFF  &rgb_ug RGB_HUI  &rgb_ug RGB_HUD  &none
-&caps_word  &none  &none  &none  &none  &none    &bl BL_DEC  &bt BT_PRV  &none            &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &none
-                          &none  &none  &none    &none       &none       &none
+&soft_off   &none  &none  &none  &none  &none    &rgb_ug RGB_TOG  &none       &rgb_ug RGB_EFF  &rgb_ug RGB_HUI  &rgb_ug RGB_HUD  &SoftLockOff
+&none       &none  &none  &none  &none  &none    &rgb_ug RGB_BRI  &bt BT_NXT  &rgb_ug RGB_EFR  &rgb_ug RGB_SAI  &rgb_ug RGB_SAD  &none
+&caps_word  &none  &none  &none  &none  &none    &rgb_ug RGB_BRD  &bt BT_PRV  &none            &rgb_ug RGB_SPI  &rgb_ug RGB_SPD  &none
+                          &none  &none  &none    &none            &none       &none
             >;
-
             label = "Corne";
         };
 
@@ -226,7 +203,6 @@
 &trans  &none  &none  &none   &none   &none     &none   &none   &none   &none  &none  &none
                       &trans  &trans  &trans    &trans  &trans  &trans
             >;
-
             label = "VS";
         };
 
@@ -237,7 +213,6 @@
 &trans  &none  &none  &none   &none   &none     &kp PRINTSCREEN  &kp INS  &none   &none    &none    &none
                       &trans  &trans  &trans    &trans           &trans   &trans
             >;
-
             label = "Functions";
         };
     };
