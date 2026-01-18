@@ -5,48 +5,10 @@ on:
     branches: [ "master" ]
     paths:
       - "config/**"
+      - "build.yaml"
       - ".github/workflows/**"
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - board: nice_nano_v2
-            shield: corne_left nice_view_adapter nice_view
-          - board: nice_nano_v2
-            shield: corne_right nice_view_adapter nice_view
-          - board: nice_nano_v2
-            shield: settings_reset
-
-    steps:
-      - name: Checkout config repo
-        uses: actions/checkout@v4
-
-      - name: Build ZMK
-        uses: zmkfirmware/zmk-build-action@v1
-        with:
-          config: ${{ github.workspace }}/config
-          board: ${{ matrix.board }}
-          shield: ${{ matrix.shield }}
-
-          # VÆLG ÉN af de to linjepar herunder:
-
-          # --- Standard upstream:
-          zmk_repository: zmkfirmware/zmk
-          zmk_branch: main
-
-          # --- (alternativ) urob fork:
-          # zmk_repository: urob/zmk
-          # zmk_branch: main
-
-      - name: Upload UF2
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ matrix.shield }}
-          path: |
-            build/**/*.uf2
-            **/zmk.uf2
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
