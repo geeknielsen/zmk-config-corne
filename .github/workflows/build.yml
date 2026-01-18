@@ -37,11 +37,11 @@ jobs:
 
           # --- Standard upstream:
           zmk_repository: zmkfirmware/zmk
-          zmk_branch: main
+          zmk_branch: master
 
           # --- (alternativ) urob fork:
           # zmk_repository: urob/zmk
-          # zmk_branch: main
+          # zmk_branch: master
 
       - name: Upload UF2
         uses: actions/upload-artifact@v4
