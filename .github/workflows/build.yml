@@ -6,6 +6,7 @@ on:
     paths:
       - "config/**"
       - "west.yml"
+      - "build.yaml"
       - ".github/workflows/**"
   workflow_dispatch:
 
@@ -19,11 +20,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: West init (use repo root manifest)
-        run: west init -l .
+      - name: West init
+        run: west init -l config
 
       - name: West update
         run: west update
 
+      - name: Debug tree
+        run: |
+          pwd
+          ls -la
+          find . -maxdepth 3 -type d -name app -print
+          find . -maxdepth 4 -name west.yml -print
+
       - name: Build settings_reset
-        run: west build -s app -d build/settings_reset -b nice_nano_v2 -- -DSHIELD="settings_reset"
+        run: west build -s zmk/app -d build/settings_reset -b nice_nano_v2 -- -DSHIELD="settings_reset"
