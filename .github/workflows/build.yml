@@ -2,7 +2,7 @@ name: Build ZMK firmware
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
     paths:
       - "config/**"
       - ".github/workflows/**"
@@ -26,24 +26,17 @@ jobs:
       - name: Checkout config repo
         uses: actions/checkout@v4
 
-      - name: Checkout ZMK (upstream)
-        uses: actions/checkout@v4
+      - name: Build ZMK
+        uses: zmkfirmware/zmk-build-action@v1
         with:
-          repository: zmkfirmware/zmk
-          ref: main
-          path: zmk
-
-      - name: Build
-        run: |
-          west init -l zmk/app
-          west update
-          west zephyr-export
-          west build -s zmk/app -d build/${{ matrix.shield }} -b ${{ matrix.board }} -- \
-            -DZMK_CONFIG=${{ github.workspace }}/config \
-            -DSHIELD="${{ matrix.shield }}"
+          # Din config ligger i repoets /config mappe
+          config: ${{ github.workspace }}/config
+          board: ${{ matrix.board }}
+          shield: ${{ matrix.shield }}
 
       - name: Upload UF2
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.shield }}
-          path: build/${{ matrix.shield }}/zephyr/*.uf2
+          path: |
+            **/*.uf2
