@@ -6,7 +6,6 @@ on:
     paths:
       - "config/**"
       - "west.yml"
-      - "build.yaml"
       - ".github/workflows/**"
   workflow_dispatch:
 
@@ -16,22 +15,47 @@ jobs:
     container:
       image: zmkfirmware/zmk-dev-arm:stable
 
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: left
+            board: nice_nano_v2
+            shield: "corne_left nice_view_adapter nice_view"
+          - name: right
+            board: nice_nano_v2
+            shield: "corne_right nice_view_adapter nice_view"
+          - name: settings_reset
+            board: nice_nano_v2
+            shield: "settings_reset"
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: West init
-        run: west init -l config
-
-      - name: West update
-        run: west update
 
       - name: Debug tree
         run: |
           pwd
           ls -la
-          find . -maxdepth 3 -type d -name app -print
-          find . -maxdepth 4 -name west.yml -print
+          echo "---- west.yml ----"
+          ls -la west.yml || true
+          echo "---- config/ ----"
+          ls -la config || true
 
-      - name: Build settings_reset
-        run: west build -s zmk/app -d build/settings_reset -b nice_nano_v2 -- -DSHIELD="settings_reset"
+      - name: West init (repo root manifest)
+        run: west init -l .
+
+      - name: West update
+        run: west update
+
+      - name: Build ${{ matrix.name }}
+        run: |
+          west build -s zmk/app -d build/${{ matrix.name }} -b ${{ matrix.board }} -- \
+            -DSHIELD="${{ matrix.shield }}" \
+            -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+
+      - name: Upload UF2
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.name }}
+          path: build/${{ matrix.name }}/zephyr/*.uf2
