@@ -2,7 +2,7 @@ name: Build ZMK firmware
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
     paths:
       - "config/**"
       - ".github/workflows/**"
