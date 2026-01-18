@@ -29,14 +29,24 @@ jobs:
       - name: Build ZMK
         uses: zmkfirmware/zmk-build-action@v1
         with:
-          # Din config ligger i repoets /config mappe
           config: ${{ github.workspace }}/config
           board: ${{ matrix.board }}
           shield: ${{ matrix.shield }}
+
+          # VÆLG ÉN af de to linjepar herunder:
+
+          # --- Standard upstream:
+          zmk_repository: zmkfirmware/zmk
+          zmk_branch: main
+
+          # --- (alternativ) urob fork:
+          # zmk_repository: urob/zmk
+          # zmk_branch: main
 
       - name: Upload UF2
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.shield }}
           path: |
-            **/*.uf2
+            build/**/*.uf2
+            **/zmk.uf2
