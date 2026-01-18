@@ -1,9 +1,8 @@
-name: Build ZMK Firmware (urob fork)
+name: Build ZMK firmware
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -14,28 +13,37 @@ jobs:
       matrix:
         include:
           - board: nice_nano_v2
-            shield: "corne_left nice_view_adapter nice_view"
+            shield: corne_left nice_view_adapter nice_view
+            artifact: corne_left
           - board: nice_nano_v2
-            shield: "corne_right nice_view_adapter nice_view"
+            shield: corne_right nice_view_adapter nice_view
+            artifact: corne_right
           - board: nice_nano_v2
-            shield: "settings_reset"
+            shield: settings_reset
+            artifact: settings_reset
 
     steps:
-      - name: Checkout config
+      - name: Checkout config repo
         uses: actions/checkout@v4
 
-      # ✅ Build using urob's maintained action
-      - name: Build firmware (urob fork)
-        uses: urob/zmk-build@main
+      - name: Checkout ZMK (urob fork)
+        uses: actions/checkout@v4
         with:
-          zmk-ref: "urob/zmk@main"
-          board: ${{ matrix.board }}
-          shield: ${{ matrix.shield }}
-          config-path: "config"
+          repository: urob/zmk
+          ref: main
+          path: zmk
 
-      # 📦 Upload resulting firmware
-      - name: Upload firmware artifacts
+      - name: Build
+        run: |
+          cd zmk
+          west init -l app
+          west update
+          west build -s app -d build/${{ matrix.artifact }} -b ${{ matrix.board }} -- \
+            -DZMK_CONFIG=${{ github.workspace }}/config \
+            -DSHIELD="${{ matrix.shield }}"
+
+      - name: Upload UF2
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.shield }}
-          path: build/${{ matrix.shield }}/zephyr/*.uf2
+          name: ${{ matrix.artifact }}
+          path: zmk/build/${{ matrix.artifact }}/zephyr/*.uf2
